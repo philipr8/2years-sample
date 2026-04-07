@@ -1,0 +1,1423 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Philip & Monique — TWO YEARS TOGETHER</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1:#2a0410; --bg2:#12030a;
+      --baby:#9ad7ff; --gold:#f6d58b;
+      --red:#ff4d6d; --red2:#ff7a93;
+      --glass: rgba(255,255,255,.10);
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:rgba(255,255,255,.92);
+      background:
+        radial-gradient(1200px 900px at 18% 10%, rgba(255,77,109,.28), transparent 58%),
+        radial-gradient(1000px 900px at 82% 18%, rgba(255,122,147,.18), transparent 60%),
+        radial-gradient(1000px 900px at 50% 90%, rgba(154,215,255,.14), transparent 60%),
+        radial-gradient(1000px 900px at 65% 80%, rgba(246,213,139,.10), transparent 60%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    #bgCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;opacity:.95;}
+    .vignette{
+      position:fixed;inset:-1px;z-index:-1;pointer-events:none;
+      background:
+        radial-gradient(1200px 900px at 50% 25%, rgba(0,0,0,.08), transparent 55%),
+        radial-gradient(1200px 900px at 50% 80%, rgba(0,0,0,.26), transparent 55%);
+      opacity:.6;
+    }
+
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(20,6,12,.80), rgba(20,6,12,.28));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .wrap{max-width:1100px;margin:0 auto;padding:18px 18px}
+    .topbar{display:flex;align-items:center;gap:14px;justify-content:space-between;}
+    .brand{display:flex;flex-direction:column;line-height:1.1;user-select:none;}
+    .brand .title{font-family:"Playfair Display", serif;font-weight:700;letter-spacing:.2px;font-size:18px;}
+    .brand .sub{font-size:12px;opacity:.78;}
+
+    .nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+    .tabBtn{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      padding:9px 12px;border-radius:999px;font-size:13px;
+      cursor:pointer;transition: transform .15s ease, background .15s ease, border .15s ease;
+    }
+    .tabBtn:hover{transform: translateY(-1px); background: rgba(255,255,255,.09);}
+    .tabBtn.active{
+      border-color: rgba(255,77,109,.50);
+      background: rgba(255,77,109,.14);
+      box-shadow: 0 10px 30px rgba(255,77,109,.12);
+    }
+
+    main{padding:26px 18px 70px}
+    .page{display:none;max-width:1100px;margin:0 auto}
+    .page.active{display:block;animation:fadeIn .28s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none}}
+
+    .hero{display:grid;grid-template-columns: 1.05fr .95fr;gap:18px;align-items:stretch;}
+    @media (max-width: 980px){ .hero{grid-template-columns:1fr; } }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";position:absolute;inset:-2px;pointer-events:none;opacity:.85;
+      background:
+        radial-gradient(700px 300px at 20% 10%, rgba(255,77,109,.16), transparent 55%),
+        radial-gradient(600px 240px at 80% 18%, rgba(154,215,255,.12), transparent 55%),
+        radial-gradient(700px 340px at 60% 90%, rgba(246,213,139,.10), transparent 60%);
+    }
+    .card > *{position:relative; z-index:1;}
+
+    .h1{margin:0 0 6px 0;font-family:"Playfair Display", serif;font-size:42px;line-height:1.04;letter-spacing:.2px;}
+    @media (max-width: 520px){ .h1{font-size:34px;} }
+
+    .accentName{font-family:"Dancing Script", cursive;font-weight:700;color: var(--baby);text-shadow: 0 10px 30px rgba(246,213,139,.18);}
+    .lead{margin:0 0 14px 0;opacity:.86;font-size:14px;}
+
+    .pillRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      font-size:13px;cursor:pointer;
+      transition:.15s ease;user-select:none;
+    }
+    .pill:hover{transform: translateY(-1px); background: rgba(255,255,255,.09);}
+    .pill .dot{width:9px;height:9px;border-radius:99px;background: var(--baby);box-shadow: 0 0 16px rgba(154,215,255,.55);}
+    .pill.red .dot{background: var(--red); box-shadow:0 0 16px rgba(255,77,109,.55);}
+
+    .timer{display:grid;grid-template-columns: repeat(5, 1fr);gap:10px;margin:12px 0 8px;}
+    @media (max-width: 720px){ .timer{ grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 520px){ .timer{ grid-template-columns: repeat(2, 1fr); } }
+
+    .tBox{border:1px solid rgba(255,255,255,.14);background: rgba(255,255,255,.06);border-radius: 18px;padding:10px 10px 12px;text-align:center;}
+    .tNum{font-family:"Playfair Display", serif;font-weight:700;font-size:26px;line-height:1.0;}
+    .tLbl{opacity:.75;font-size:11px;margin-top:4px;text-transform:uppercase;letter-spacing:.12em;}
+
+    .reasonBox{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding:14px 14px;
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .reasonBox .heart{
+      width:38px;height:38px;border-radius:14px;
+      display:grid;place-items:center;
+      background: rgba(255,77,109,.14);
+      border:1px solid rgba(255,77,109,.22);
+      box-shadow: 0 0 20px rgba(255,77,109,.12);
+      font-size:18px;
+    }
+    .reasonText{margin:0;font-family:"Dancing Script", cursive;font-weight:700;font-size:22px;line-height:1.15;color: rgba(255,255,255,.94);}
+    .reasonSmall{margin:4px 0 0;font-size:12px;opacity:.72;}
+    .miniNote{margin-top:12px;font-size:12px;opacity:.70;}
+
+    /* Tulip fireworks */
+    .tulipLayer{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden;}
+    .tulip{position:absolute;font-size:28px;will-change: transform, opacity;filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));opacity:0;animation: tulipPop 1.35s ease forwards;}
+    @keyframes tulipPop{
+      0%{ transform: translate(var(--x0), var(--y0)) scale(.35) rotate(-10deg); opacity:0; }
+      15%{opacity:1}
+      55%{ transform: translate(var(--x1), var(--y1)) scale(1.1) rotate(10deg); opacity:1;}
+      100%{ transform: translate(var(--x2), var(--y2)) scale(.9) rotate(18deg); opacity:0;}
+    }
+
+    /* Scratch */
+    .scratchWrap{display:grid;grid-template-columns:1fr;gap:10px;}
+    .scratchCard{border-radius: 22px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background: rgba(255,255,255,.06);position:relative;box-shadow: 0 16px 60px rgba(0,0,0,.32);}
+    .scratchInner{
+      position:relative;
+      width:100%;
+      aspect-ratio: 4 / 3; /* set exactly from image via JS */
+      background: rgba(0,0,0,.25);
+    }
+    .scratchInner img{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit: contain; /* shows the FULL image (no crop) */
+      background: rgba(0,0,0,.20);
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .scratchCanvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor: crosshair;}
+    .scratchBadge{
+      position:absolute;left:14px;top:14px;padding:10px 12px;border-radius: 999px;
+      border:1px solid rgba(255,255,255,.18);background: rgba(10,10,10,.55);
+      backdrop-filter: blur(10px);font-size:12px;display:flex;gap:8px;align-items:center;
+    }
+    .scratchBadge b{font-family:"Playfair Display", serif; font-weight:700;}
+    .scratchDone{
+      position:absolute;right:14px;top:14px;padding:10px 12px;border-radius: 999px;
+      border:1px solid rgba(255,77,109,.24);background: rgba(255,77,109,.14);
+      backdrop-filter: blur(10px);font-size:12px;display:none;gap:8px;align-items:center;
+      box-shadow: 0 14px 40px rgba(255,77,109,.10);
+    }
+    .scratchPulse{ animation: pulse 1.2s ease-in-out infinite; }
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+
+    /* Section headings */
+    .pageTitle{font-family:"Playfair Display", serif;font-weight:700;font-size:28px;margin:0 0 12px;}
+    .pageSub{margin:0 0 18px;opacity:.80;font-size:14px;}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left: 20px;display:grid;gap:14px;}
+    .timeline::before{
+      content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;border-radius:9px;opacity:.8;
+      background: linear-gradient(to bottom, rgba(255,77,109,.55), rgba(154,215,255,.35), rgba(246,213,139,.40));
+    }
+    .tItem{
+      position:relative;padding:14px 14px 14px 16px;border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.14);overflow:hidden;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border .15s ease;
+    }
+    .tItem:hover{
+      transform: translateY(-1px);
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border-color: rgba(255,255,255,.18);
+    }
+    .tItem::before{
+      content:"";position:absolute;left:-8px; top:18px;width:18px;height:18px;border-radius:999px;
+      background: rgba(255,77,109,.60);box-shadow: 0 0 18px rgba(255,77,109,.30);
+      border:1px solid rgba(255,255,255,.20);
+    }
+    .tTop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;}
+    .tTitle{margin:0;font-family:"Playfair Display", serif;font-weight:700;font-size:18px;}
+    .tDate{opacity:.75;font-size:12px;letter-spacing:.05em;text-transform:uppercase;}
+    .tDesc{margin:8px 0 0;opacity:.84;font-size:13px;line-height:1.55;}
+    .tHint{margin:10px 0 0;opacity:.72;font-size:12px;display:inline-flex;gap:8px;align-items:center;}
+    .tHint .dot{width:7px;height:7px;border-radius:99px;background: rgba(154,215,255,.9);box-shadow:0 0 14px rgba(154,215,255,.35);}
+
+    /* Media grid */
+    .grid{display:grid;grid-template-columns: repeat(3, 1fr);gap:14px;}
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px){ .grid{ grid-template-columns: 1fr; } }
+
+    .mediaCard{
+      position:relative;border-radius: 22px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 14px 50px rgba(0,0,0,.30);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border .15s ease;
+    }
+    .mediaCard:hover{ transform: translateY(-2px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
+
+    /* hearts moving around each frame */
+    .heartHalo{position:absolute;inset:0;pointer-events:none;z-index:4;}
+    .heartHalo .strip{position:absolute;opacity:.95;filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));mix-blend-mode: screen;}
+    .heartHalo .strip{
+      --hs: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff4d6d' d='M12 21s-7.2-4.7-9.6-8.7C.4 9 .9 6.3 3 4.6 5.2 2.8 8 3.2 10 5.2l2 2 2-2c2-2 4.8-2.4 7-.6 2.1 1.7 2.6 4.4.6 7.7C19.2 16.3 12 21 12 21z'/%3E%3C/svg%3E");
+      background-size: var(--hs) var(--hs);
+      background-repeat: repeat;
+    }
+    .heartHalo .top, .heartHalo .bottom{height: 18px;left:-2px;right:-2px;background-repeat: repeat-x;background-size: var(--hs) var(--hs);}
+    .heartHalo .top{ top:-2px; animation: heartsX 3.4s linear infinite; }
+    .heartHalo .bottom{ bottom:-2px; animation: heartsX 3.0s linear infinite reverse; }
+    .heartHalo .left, .heartHalo .right{width: 18px;top:-2px;bottom:-2px;background-repeat: repeat-y;background-size: var(--hs) var(--hs);}
+    .heartHalo .left{ left:-2px; animation: heartsY 3.2s linear infinite; }
+    .heartHalo .right{ right:-2px; animation: heartsY 2.8s linear infinite reverse; }
+    @keyframes heartsX{ from{ background-position: 0 0; } to{ background-position: 220px 0; } }
+    @keyframes heartsY{ from{ background-position: 0 0; } to{ background-position: 0 220px; } }
+
+    /* Photos */
+    .mediaCard img{
+      width:100%;
+      height: 320px;
+      object-fit: cover;
+      display:block;
+      position:relative;
+      z-index:1;
+      background: rgba(255,255,255,.04);
+    }
+    @media (max-width: 560px){ .mediaCard img{ height: 340px; } }
+
+    /* Videos: vertical */
+    .videoCard{cursor:default;max-width: 520px;margin: 0 auto;}
+    .videoCard video{
+      width:100%;
+      aspect-ratio: 9 / 16;
+      height:auto;
+      object-fit: cover;
+      display:block;
+      position:relative;
+      z-index:1;
+      background: rgba(255,255,255,.04);
+    }
+    @media (max-width: 560px){ .videoCard{ max-width: 92vw; } }
+
+    /* BIG PLAY BUTTON OVERLAY */
+    .playOverlay{
+      position:absolute;inset:0;z-index:6;
+      display:grid;place-items:center;
+      pointer-events:none;
+      opacity:1;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .playOverlay.playing{opacity:0;transform: scale(.98);}
+    .playOverlayBtn{
+      pointer-events:auto;
+      width:92px;height:92px;border-radius:999px;
+      background: rgba(255,77,109,.18);
+      border:1px solid rgba(255,255,255,.22);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.45), 0 0 0 10px rgba(255,77,109,.08);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      transition: transform .15s ease, filter .15s ease, background .15s ease;
+    }
+    .playOverlayBtn:hover{transform: translateY(-1px) scale(1.02); filter: brightness(1.03); background: rgba(255,77,109,.22);}
+    .playOverlayBtn:active{transform: scale(.98);}
+    .playIcon{
+      width:0;height:0;
+      border-left: 26px solid rgba(255,255,255,.92);
+      border-top: 16px solid transparent;
+      border-bottom: 16px solid transparent;
+      margin-left: 7px;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+    }
+
+    /* Wheel (NO SEGMENT TEXT) */
+    .wheelWrap{display:grid;grid-template-columns: 1fr;gap:12px;align-items:center;justify-items:center;padding-top:10px;}
+    .wheelArea{width:min(360px, 92vw);aspect-ratio: 1 / 1;position:relative;display:grid;place-items:center;}
+    .pointer{
+      position:absolute;
+      top:-22px;
+      width:0;height:0;
+      border-left:16px solid transparent;
+      border-right:16px solid transparent;
+      border-top:30px solid rgba(255,255,255,.88);
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,.35));
+      transform: translateY(6px);
+      z-index:10;
+    }
+
+    .wheel{
+      width:100%;height:100%;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: 0 16px 50px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      transform: rotate(var(--rot, 0deg));
+      transition: transform 2.9s cubic-bezier(.17,.85,.2,1.0);
+      background:
+        conic-gradient(from 0deg,
+          rgba(255,77,109,.28) 0 60deg,
+          rgba(154,215,255,.22) 60deg 120deg,
+          rgba(246,213,139,.18) 120deg 180deg,
+          rgba(255,122,147,.18) 180deg 240deg,
+          rgba(154,215,255,.20) 240deg 300deg,
+          rgba(246,213,139,.16) 300deg 360deg
+        );
+    }
+    .wheel::after{
+      content:"";
+      position:absolute;
+      inset:12px;
+      border-radius:999px;
+      background: radial-gradient(circle at 30% 25%, rgba(255,255,255,.18), rgba(255,255,255,.04) 55%, rgba(0,0,0,.08));
+      border: 1px solid rgba(255,255,255,.10);
+      z-index:1;
+    }
+
+    .wheelCenter{
+      position:absolute;
+      width:34%;
+      aspect-ratio:1/1;
+      border-radius:999px;
+      background: rgba(18,3,10,.58);
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: inset 0 0 0 6px rgba(255,255,255,.04);
+      display:grid;
+      place-items:center;
+      font-family:"Dancing Script", cursive;
+      font-weight:700;
+      font-size:18px;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 10px 30px rgba(0,0,0,.35);
+      user-select:none;
+      z-index:3;
+    }
+
+    .spinBtn{
+      border:none;cursor:pointer;padding:11px 14px;border-radius: 14px;
+      background: linear-gradient(135deg, rgba(255,77,109,.34), rgba(154,215,255,.18));
+      color: rgba(255,255,255,.95);
+      font-weight:600;letter-spacing:.02em;
+      box-shadow: 0 14px 40px rgba(255,77,109,.10);
+      border:1px solid rgba(255,255,255,.18);
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .spinBtn:hover{transform: translateY(-1px); filter: brightness(1.03);}
+    .spinResult{font-size:13px;opacity:.86;text-align:center;min-height:18px;}
+
+    /* Songs */
+    .songsGrid{display:grid;grid-template-columns: 1.1fr .9fr;gap:14px;}
+    @media (max-width: 900px){ .songsGrid{grid-template-columns:1fr;} }
+
+    .songList{display:grid;gap:10px;}
+    .songRow{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      border-radius: 18px;
+      padding:14px 14px;
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border .15s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .songRow:hover{transform: translateY(-1px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
+    .songRow.active{
+      border-color: rgba(154,215,255,.36);
+      background: rgba(154,215,255,.10);
+      box-shadow: 0 0 0 10px rgba(154,215,255,.06), 0 16px 60px rgba(0,0,0,.22);
+    }
+    .songRow .title{margin:0;font-family:"Playfair Display", serif;font-weight:700;font-size:16px;}
+    .songRow .artist{margin:6px 0 0;opacity:.78;font-size:13px;}
+    .songRow .hint{
+      position:absolute;right:12px;top:12px;
+      opacity:.75;font-size:12px;
+      background: rgba(255,77,109,.10);
+      border:1px solid rgba(255,77,109,.18);
+      border-radius: 999px;
+      padding:8px 10px;
+      backdrop-filter: blur(10px);
+      display:flex;gap:8px;align-items:center;
+    }
+    .eq{display:none;gap:3px;align-items:flex-end;height:14px;}
+    .eq span{width:3px;border-radius:3px;background: rgba(255,255,255,.86);animation: eq 1s infinite ease-in-out;}
+    .eq span:nth-child(2){animation-delay:.12s}
+    .eq span:nth-child(3){animation-delay:.24s}
+    .eq span:nth-child(4){animation-delay:.36s}
+    @keyframes eq{0%,100%{height:4px;opacity:.65}50%{height:14px;opacity:1}}
+    .songRow.active .eq{display:flex}
+
+    .songDetail{
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      border-radius: 22px;
+      padding:16px;
+      box-shadow: 0 14px 50px rgba(0,0,0,.26);
+      position:relative;
+      overflow:hidden;
+      min-height: 330px;
+    }
+    .songDetail::before{
+      content:"";
+      position:absolute;inset:-2px;pointer-events:none;opacity:.9;
+      background:
+        radial-gradient(520px 180px at 20% 20%, rgba(255,77,109,.16), transparent 55%),
+        radial-gradient(520px 180px at 80% 30%, rgba(154,215,255,.10), transparent 60%),
+        radial-gradient(520px 180px at 60% 90%, rgba(246,213,139,.10), transparent 60%);
+    }
+    .songDetail > *{position:relative;z-index:1;}
+
+    .detailTitle{margin:0;font-family:"Playfair Display", serif;font-weight:700;font-size:20px;}
+    .detailArtist{margin:8px 0 14px;opacity:.78;font-size:13px;}
+    .detailBtns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+    .linkBtn{
+      text-decoration:none;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius: 14px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(154,215,255,.14);
+      color: rgba(255,255,255,.92);
+      font-weight:600;font-size:13px;
+      transition:.15s ease;
+      white-space:nowrap;
+    }
+    .linkBtn:hover{transform: translateY(-1px); background: rgba(154,215,255,.18);}
+    .linkBtn.red{background: rgba(255,77,109,.14);}
+    .linkBtn.red:hover{background: rgba(255,77,109,.18);}
+
+    .qrWrap{
+      display:none;
+      gap:12px;align-items:center;flex-wrap:wrap;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      border-radius: 18px;
+      padding:12px;
+    }
+    .qrWrap img{
+      width:140px;height:140px;border-radius:14px;background:#fff;padding:10px;display:block;
+    }
+    .qrText{font-size:12px;opacity:.80;max-width:320px;}
+
+    .ytWrap{
+      margin-top:12px;
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      box-shadow: 0 14px 40px rgba(0,0,0,.22);
+      display:none;
+    }
+    .ytWrap iframe{width:100%;aspect-ratio: 16 / 9;border:0;display:block;}
+
+    /* Letter */
+    .letter{font-family:"Playfair Display", serif;font-size:18px;line-height:1.72;opacity:.95;}
+    .letter .script{font-family:"Dancing Script", cursive;font-size:34px;margin:0 0 8px;color: var(--gold);}
+    .letter .sig{margin-top:14px;font-family:"Dancing Script", cursive;font-size:28px;color: rgba(255,255,255,.92);}
+
+    /* Lightbox */
+    .overlay{
+      position:fixed;inset:0;
+      background: rgba(0,0,0,.64);
+      backdrop-filter: blur(8px);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:80;
+      padding:18px;
+    }
+    .overlay.active{display:flex;}
+    .lightbox{
+      width:min(1200px, 96vw);
+      height: 90vh;
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(18,3,10,.65);
+      box-shadow: 0 20px 70px rgba(0,0,0,.55);
+      position:relative;
+      overflow:hidden;
+    }
+    .lightbox img{width:100%;height:100%;object-fit:contain;display:block;background: rgba(0,0,0,.18);}
+    .closeBtn{
+      position:absolute;right:12px;top:12px;border:none;cursor:pointer;
+      width:42px;height:42px;border-radius: 14px;
+      background: rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.92);
+      font-size:18px;
+      display:grid;place-items:center;z-index:5;
+    }
+    .closeBtn:hover{background: rgba(255,255,255,.14);}
+  </style>
+</head>
+
+<body>
+  <canvas id="bgCanvas"></canvas>
+  <div class="vignette"></div>
+  <div class="tulipLayer" id="tulipLayer"></div>
+
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <div class="title">philip <span style="opacity:.75">&</span> monique</div>
+          <div class="sub">two years together</div>
+        </div>
+
+        <nav class="nav" aria-label="Site navigation">
+          <button class="tabBtn active" data-go="home">us</button>
+          <button class="tabBtn" data-go="timeline">our story so far</button>
+          <button class="tabBtn" data-go="photos">memories</button>
+          <button class="tabBtn" data-go="videos">moments</button>
+          <button class="tabBtn" data-go="songs">our soundtrack</button>
+          <button class="tabBtn" data-go="letter">my love for you</button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="page active" id="page-home">
+      <div class="hero">
+
+        <!-- LEFT PANEL -->
+        <div class="card">
+          <h1 class="h1">happy two years, <span class="accentName">monique</span></h1>
+          <p class="lead">a tiny little corner of the internet that’s just ours — made by philly, for you babe.</p>
+
+          <div class="timer" id="timer">
+            <div class="tBox"><div class="tNum" id="tYears">—</div><div class="tLbl">years</div></div>
+            <div class="tBox"><div class="tNum" id="tDays">—</div><div class="tLbl">days</div></div>
+            <div class="tBox"><div class="tNum" id="tHours">—</div><div class="tLbl">hours</div></div>
+            <div class="tBox"><div class="tNum" id="tMins">—</div><div class="tLbl">minutes</div></div>
+            <div class="tBox"><div class="tNum" id="tSecs">—</div><div class="tLbl">seconds</div></div>
+          </div>
+
+          <div class="reasonBox" style="margin-top:10px;">
+            <div class="heart">❤</div>
+            <div style="flex:1">
+              <p class="reasonText" id="reasonText">you are my everything.</p>
+              <p class="reasonSmall">tap “new reason” whenever you want another one.</p>
+            </div>
+          </div>
+
+          <div class="pillRow">
+            <div class="pill" id="newReasonBtn"><span class="dot"></span> new reason</div>
+            <div class="pill red" id="tulipBtn"><span class="dot"></span> tulip fireworks</div>
+            <div class="pill" id="goScratchBtn"><span class="dot"></span> scratch reveal</div>
+          </div>
+
+          <p class="miniNote">Together since <b>January 26, 2024</b>.</p>
+
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,.10); margin:16px 0;">
+
+          <!-- WHEEL (NO TEXT ON WHEEL) -->
+          <div class="wheelWrap">
+            <div class="wheelArea">
+              <div class="pointer" aria-hidden="true"></div>
+              <div class="wheel" id="wheel"></div>
+              <div class="wheelCenter">spin ∞</div>
+            </div>
+
+            <button class="spinBtn" id="spinBtn">feeling lucky? i sure am the luckiest</button>
+            <div class="spinResult" id="spinResult"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL: scratch -->
+        <div class="card">
+          <div class="scratchWrap" id="scratchSection">
+            <div class="scratchCard" id="scratchCard">
+              <div class="scratchInner" id="scratchInner">
+                <img id="scratchImg" src="media/lego.png" alt="Hidden memory" />
+                <canvas class="scratchCanvas" id="scratchCanvas"></canvas>
+
+                <div class="scratchBadge"><b>scratch</b>to reveal</div>
+                <div class="scratchDone" id="scratchDone">revealed</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="miniNote">tip: use your mouse or finger to scratch.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="page" id="page-timeline">
+      <div class="wrap" style="max-width:1100px;padding:0;">
+        <div class="card">
+          <h2 class="pageTitle">our story so far</h2>
+          <p class="pageSub">tap a moment to pop up its photo</p>
+          <div class="timeline" id="timelineList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTOS -->
+    <section class="page" id="page-photos">
+      <div class="wrap" style="max-width:1100px;padding:0;">
+        <div class="card">
+          <h2 class="pageTitle">memories</h2>
+          <p class="pageSub">click any photo to see it fullscreen</p>
+          <div class="grid" id="photosGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="page" id="page-videos">
+      <div class="wrap" style="max-width:1100px;padding:0;">
+        <div class="card">
+          <h2 class="pageTitle">moments</h2>
+          <p class="pageSub">small moments i'll cherish forever</p>
+          <div class="grid" id="videosGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SONGS -->
+    <section class="page" id="page-songs">
+      <div class="wrap" style="max-width:1100px;padding:0;">
+        <div class="card">
+          <h2 class="pageTitle">our soundtrack</h2>
+          <p class="pageSub">click a song to play it</p>
+
+          <div class="songsGrid">
+            <div class="songList" id="songList"></div>
+
+            <div class="songDetail" id="songDetail">
+              <h3 class="detailTitle" id="detailTitle">pick a song</h3>
+              <div class="detailArtist" id="detailArtist"></div>
+
+              <div class="detailBtns" id="detailBtns"></div>
+
+              <div class="qrWrap" id="qrWrap">
+                <img id="qrImg" alt="Spotify QR code" />
+                <div class="qrText" id="qrText"></div>
+              </div>
+
+              <div class="ytWrap" id="ytWrap">
+                <iframe id="ytFrame" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+
+              <p class="miniNote" style="margin:12px 0 0;">press play and roam the website with it on in the background</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LETTER -->
+    <section class="page" id="page-letter">
+      <div class="wrap" style="max-width:1100px;padding:0;">
+        <div class="card">
+          <div class="letter">
+            <div class="script">monique,</div>
+            <p>
+              two years with you has been my favorite kind of time. it's the kind that doesn’t just pass,
+              it builds. you’ve made my days softer, funnier, and way more meaningful. i'm beyond grateful to get to experience what true love feels like with my one and only true love.
+            </p>
+            <p>
+              i love how you make the small stuff feel special. i love your heart. i love your laugh.
+              i love how being with you feels like home, even when we’re doing absolutely nothing. i love your smelly farts. i love how being with you is my favourite way to spend time. yes, even over playing fifa.
+            </p>
+            <p>
+              HAPPY TWO YEARS TO US!!! here’s to everything we’ve already lived and everything we haven’t even dreamed up yet. to all the wonderful memories we've made and will make in the future. i love you so much baby forever and ever and ever ❤️♾️
+            </p>
+            <div class="sig">love, philly</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="overlay" id="overlay">
+      <div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <button class="closeBtn" id="closeBtn" aria-label="Close">✕</button>
+        <img id="lightboxImg" alt="Fullscreen photo" />
+      </div>
+    </div>
+  </main>
+
+  <script>
+    /* ---------------------------
+       TAB NAV
+    ----------------------------*/
+    const pages = ["home","timeline","photos","videos","songs","letter"];
+    const tabButtons = Array.from(document.querySelectorAll(".tabBtn"));
+
+    function showPage(name){
+      pages.forEach(p=>{
+        document.getElementById("page-" + p).classList.toggle("active", p === name);
+      });
+      tabButtons.forEach(b=>{
+        b.classList.toggle("active", b.dataset.go === name);
+      });
+      history.replaceState(null, "", "#" + name);
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    tabButtons.forEach(btn=>{
+      btn.addEventListener("click", ()=> showPage(btn.dataset.go));
+    });
+
+    const initial = (location.hash || "").replace("#","").trim();
+    if (pages.includes(initial)) showPage(initial);
+
+    /* ---------------------------
+       TIMER (with seconds)
+    ----------------------------*/
+    const startDate = new Date("2024-01-26T00:00:00");
+    const tYears = document.getElementById("tYears");
+    const tDays  = document.getElementById("tDays");
+    const tHours = document.getElementById("tHours");
+    const tMins  = document.getElementById("tMins");
+    const tSecs  = document.getElementById("tSecs");
+
+    function updateTimer(){
+      const now = new Date();
+      let years = now.getFullYear() - startDate.getFullYear();
+      const annivThisYear = new Date(startDate);
+      annivThisYear.setFullYear(startDate.getFullYear() + years);
+      if (now < annivThisYear) years -= 1;
+
+      const lastAnniv = new Date(startDate);
+      lastAnniv.setFullYear(startDate.getFullYear() + years);
+
+      const diffMs = Math.max(0, now - lastAnniv);
+      const totalSeconds = Math.floor(diffMs / 1000);
+
+      const days = Math.floor(totalSeconds / (60 * 60 * 24));
+      const hours = Math.floor((totalSeconds - days * 60 * 60 * 24) / (60 * 60));
+      const mins = Math.floor((totalSeconds - days * 60 * 60 * 24 - hours * 60 * 60) / 60);
+      const secs = totalSeconds % 60;
+
+      tYears.textContent = years;
+      tDays.textContent = days;
+      tHours.textContent = hours;
+      tMins.textContent = mins;
+      tSecs.textContent = secs;
+    }
+    updateTimer();
+    setInterval(updateTimer, 250);
+
+    /* ---------------------------
+       RANDOM REASONS
+    ----------------------------*/
+    const reasons = [
+      "you are eevrything to me.",
+      "you’re my favorite person to do nothing with.",
+      "your smile fixes my whole day.",
+      "you’re the sweetest and most caring person.",
+      "you make me laugh when i'm down.",
+      "you make ordinary days feel special.",
+      "you listen with your whole heart.",
+      "you’re my safe place.",
+      "you make love feel easy and effortless.",
+      "you make me want to be better.",
+      "you are my motivation.",
+      "you're the willy to my bum bum.",
+      "you always have my back.",
+      "you're the smartest girl i know.",
+      "you are my motivation.",
+      "you’re my favorite person to talk to about everything and nothing.",
+      "i love how you notice the small things.",
+      "you make me feel chosen.",
+      "i love how we can be silly together.",
+      "i love how we grow together.",
+      "i would choose you in every timeline and in every universe.",
+      "you make me feel understood without me saying much.",
+      "you’re my favorite notification.",
+      "i love your laugh — it’s my favorite sound.",
+      "i love your farts — it’s my favorite smell.",
+      "you’re the best part of my routine."
+    ];
+    const reasonText = document.getElementById("reasonText");
+    document.getElementById("newReasonBtn").addEventListener("click", ()=>{
+      const current = reasonText.textContent.trim();
+      let pick = current;
+      while (pick === current && reasons.length > 1){
+        pick = reasons[Math.floor(Math.random()*reasons.length)];
+      }
+      reasonText.textContent = pick;
+      reasonText.animate([{transform:"translateY(6px)",opacity:.0},{transform:"none",opacity:1}], {duration:220, easing:"ease-out"});
+    });
+
+    /* ---------------------------
+       TULIP FIREWORKS
+    ----------------------------*/
+    const tulipLayer = document.getElementById("tulipLayer");
+    document.getElementById("tulipBtn").addEventListener("click", ()=>{
+      const bursts = 6 + Math.floor(Math.random()*4);
+      for (let b=0; b<bursts; b++){
+        tulipBurst((innerWidth * (0.18 + Math.random()*0.64)), (innerHeight * (0.20 + Math.random()*0.55)));
+      }
+    });
+
+    function tulipBurst(cx, cy){
+      const count = 18;
+      for (let i=0; i<count; i++){
+        const el = document.createElement("div");
+        el.className = "tulip";
+        el.textContent = "🌷";
+        const a = (Math.PI*2) * (i / count);
+        const r1 = 60 + Math.random()*55;
+        const r2 = 120 + Math.random()*80;
+        el.style.left = "0px";
+        el.style.top = "0px";
+        el.style.setProperty("--x0", (cx + (Math.cos(a) * 10)) + "px");
+        el.style.setProperty("--y0", (cy + (Math.sin(a) * 10)) + "px");
+        el.style.setProperty("--x1", (cx + (Math.cos(a) * r1)) + "px");
+        el.style.setProperty("--y1", (cy + (Math.sin(a) * r1)) + "px");
+        el.style.setProperty("--x2", (cx + (Math.cos(a) * r2)) + "px");
+        el.style.setProperty("--y2", (cy + (Math.sin(a) * r2)) + "px");
+        el.style.animationDelay = (Math.random()*0.12) + "s";
+        tulipLayer.appendChild(el);
+        el.addEventListener("animationend", ()=> el.remove());
+      }
+    }
+
+    /* ---------------------------
+       SCRATCH REVEAL (dark cover + exact image aspect ratio)
+    ----------------------------*/
+    const goScratchBtn = document.getElementById("goScratchBtn");
+    const scratchCard = document.getElementById("scratchCard");
+    const scratchInner = document.getElementById("scratchInner");
+    const scratchImg = document.getElementById("scratchImg");
+    const scratchCanvas = document.getElementById("scratchCanvas");
+    const scratchDone = document.getElementById("scratchDone");
+    const sctx = scratchCanvas.getContext("2d");
+    let scratching = false;
+    let revealed = false;
+
+    goScratchBtn.addEventListener("click", ()=>{
+      showPage("home");
+      setTimeout(()=>{
+        scratchCard.classList.add("scratchPulse");
+        document.getElementById("scratchSection").scrollIntoView({behavior:"smooth", block:"center"});
+        setTimeout(()=> scratchCard.classList.remove("scratchPulse"), 2200);
+      }, 60);
+    });
+
+    function applyScratchAspectFromImage(){
+      if (scratchImg.naturalWidth && scratchImg.naturalHeight){
+        scratchInner.style.aspectRatio = `${scratchImg.naturalWidth} / ${scratchImg.naturalHeight}`;
+      }
+    }
+
+    function resizeScratch(){
+      applyScratchAspectFromImage();
+
+      const rect = scratchCanvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      scratchCanvas.width = Math.floor(rect.width * dpr);
+      scratchCanvas.height = Math.floor(rect.height * dpr);
+      sctx.setTransform(dpr,0,0,dpr,0,0);
+
+      // dark cover
+      sctx.globalCompositeOperation = "source-over";
+      sctx.clearRect(0,0,rect.width,rect.height);
+      const grad = sctx.createLinearGradient(0,0,rect.width,rect.height);
+      grad.addColorStop(0, "rgba(0,0,0,.97)");
+      grad.addColorStop(.5, "rgba(10,2,8,.96)");
+      grad.addColorStop(1, "rgba(0,0,0,.97)");
+      sctx.fillStyle = grad;
+      sctx.fillRect(0,0,rect.width,rect.height);
+
+      // sparkles
+      for (let i=0;i<220;i++){
+        const a = 0.03 + Math.random()*0.05;
+        sctx.fillStyle = `rgba(255,255,255,${a})`;
+        sctx.beginPath();
+        sctx.arc(Math.random()*rect.width, Math.random()*rect.height, 0.6+Math.random()*1.4, 0, Math.PI*2);
+        sctx.fill();
+      }
+
+      sctx.fillStyle = "rgba(255,255,255,.75)";
+      sctx.font = "600 14px Poppins, sans-serif";
+      sctx.fillText("scratch to reveal", 18, rect.height - 18);
+
+      // scratch mode
+      sctx.globalCompositeOperation = "destination-out";
+    }
+
+    function scratchAt(clientX, clientY){
+      if (revealed) return;
+      const rect = scratchCanvas.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+      sctx.beginPath();
+      sctx.arc(x, y, 26, 0, Math.PI*2);
+      sctx.fill();
+
+      if (Math.random() < 0.06){
+        const w = scratchCanvas.width, h = scratchCanvas.height;
+        let cleared = 0;
+        const samples = 700;
+        for (let i=0;i<samples;i++){
+          const px = (Math.random()*w) | 0;
+          const py = (Math.random()*h) | 0;
+          const a = sctx.getImageData(px, py, 1, 1).data[3];
+          if (a === 0) cleared++;
+        }
+        if (cleared / samples > 0.55){
+          revealed = true;
+          scratchDone.style.display = "inline-flex";
+          sctx.globalCompositeOperation = "destination-out";
+          sctx.fillStyle = "rgba(0,0,0,1)";
+          sctx.fillRect(0,0,rect.width,rect.height);
+          tulipBurst(innerWidth*0.72, innerHeight*0.50);
+        }
+      }
+    }
+
+    scratchCanvas.addEventListener("pointerdown", (e)=>{
+      scratching = true;
+      scratchCanvas.setPointerCapture(e.pointerId);
+      scratchAt(e.clientX, e.clientY);
+    });
+    scratchCanvas.addEventListener("pointermove", (e)=>{
+      if (!scratching) return;
+      scratchAt(e.clientX, e.clientY);
+    });
+    scratchCanvas.addEventListener("pointerup", ()=>{ scratching = false; });
+
+    scratchImg.addEventListener("load", ()=>{
+      applyScratchAspectFromImage();
+      resizeScratch();
+    });
+    window.addEventListener("resize", resizeScratch);
+    setTimeout(resizeScratch, 60);
+    resizeScratch();
+
+    /* ---------------------------
+       LIGHTBOX
+    ----------------------------*/
+    const overlay = document.getElementById("overlay");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const closeBtn = document.getElementById("closeBtn");
+
+    function openLightboxCandidates(cands){
+      let idx = 0;
+      overlay.classList.add("active");
+      lightboxImg.onerror = ()=>{
+        idx++;
+        if (idx < cands.length) lightboxImg.src = cands[idx];
+      };
+      lightboxImg.src = cands[idx];
+    }
+
+    function openLightbox(src){
+      overlay.classList.add("active");
+      lightboxImg.onerror = null;
+      lightboxImg.src = src;
+    }
+    function closeLightbox(){
+      overlay.classList.remove("active");
+      lightboxImg.removeAttribute("src");
+    }
+    closeBtn.addEventListener("click", closeLightbox);
+    overlay.addEventListener("click", (e)=>{ if(e.target === overlay) closeLightbox(); });
+    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeLightbox(); });
+
+    /* ---------------------------
+       MEDIA HELPERS
+    ----------------------------*/
+    function photoCandidates(i){
+      const two = String(i).padStart(2,"0");
+      return [
+        `media/p${two}.png`, `media/p${i}.png`,
+        `media/P${two}.png`, `media/P${i}.png`,
+        `media/p${two}.PNG`, `media/p${i}.PNG`,
+        `media/P${two}.PNG`, `media/P${i}.PNG`
+      ];
+    }
+    function videoCandidates(i){
+      const two = String(i).padStart(2,"0");
+      return [
+        `media/v${two}.mp4`, `media/v${i}.mp4`,
+        `media/V${two}.mp4`, `media/V${i}.mp4`,
+        `media/v${two}.MP4`, `media/v${i}.MP4`,
+        `media/V${two}.MP4`, `media/V${i}.MP4`
+      ];
+    }
+    function buildHeartHalo(){
+      const halo = document.createElement("div");
+      halo.className = "heartHalo";
+      halo.innerHTML = `
+        <div class="strip top"></div>
+        <div class="strip right"></div>
+        <div class="strip bottom"></div>
+        <div class="strip left"></div>
+      `;
+      return halo;
+    }
+
+    /* ---------------------------
+       TIMELINE (click -> pop photo p01..)
+    ----------------------------*/
+    const timelineEvents = [
+      {date:"Jan 26, 2024", title:"where it all started", desc:"the beginning of my favorite story.", img:61},
+      {date:"February 2024", title:"getting comfortable", desc:"our first (with photo proof) sleep together.", img:62},
+      {date:"February 14, 2024", title:"my valentine", desc:"boba and walsh = the best valentines.", img:63},
+      {date:"March 2024", title:"first movie date", desc:"cuddling at the landmark watching a scary movie, ahhhhh.", img:64},
+      {date:"April 9, 2024", title:"west walk by the water", desc:"just the two of us and our evening by the water.", img:65},
+      {date:"April 27, 2024", title:"first link in toronto", desc:"wandering the westin with the one i love.", img:66},
+      {date:"July 1, 2024", title:"canada day", desc:"ngl this is the most aesthetic photo we've taken so i had to include it", img:67},
+      {date:"January 26, 2025", title:"1 year", desc:"a fancy steak and blackened chicken dinner at the heist in ktown.", img:69},
+      {date:"July 6, 2025", title:"date night in the 6ix", desc:"what a wonderful day of eating at joeys and walking around my city with my love.", img:70},
+      {date:"September 8, 2025", title:"my bday surprise", desc:"after a romantic dinner by the water (that pic is in the photos section), she orchestrates a surprise party for me hehehe.", img:71},
+      {date:"December 7, 2025", title:"your bday", desc:"a day of eating heal, rotting together during exam szn, having pizza and cake, and opening gifts.", img:72},
+      {date:"January 26, 2026", title:"2 years", desc:"still choosing you, now, forever and always.", img:73}
+    ];
+
+    const timelineList = document.getElementById("timelineList");
+    timelineEvents.forEach(ev=>{
+      const div = document.createElement("div");
+      div.className = "tItem";
+      div.innerHTML = `
+        <div class="tTop">
+          <h3 class="tTitle">${escapeHtml(ev.title)}</h3>
+          <div class="tDate">${escapeHtml(ev.date)}</div>
+        </div>
+        <p class="tDesc">${escapeHtml(ev.desc)}</p>
+        <div class="tHint"><span class="dot"></span> Tap to view photo</div>
+      `;
+      div.addEventListener("click", ()=>{
+        openLightboxCandidates(photoCandidates(ev.img));
+      });
+      timelineList.appendChild(div);
+    });
+
+    /* ---------------------------
+       RENDER PHOTOS / VIDEOS
+    ----------------------------*/
+    const photosGrid = document.getElementById("photosGrid");
+    const videosGrid = document.getElementById("videosGrid");
+    const photoCount = 30;
+    const videoCount = 10;
+
+    for (let i=1; i<=photoCount; i++){
+      const card = document.createElement("div");
+      card.className = "mediaCard";
+      card.appendChild(buildHeartHalo());
+
+      const img = document.createElement("img");
+      const cands = photoCandidates(i);
+      let ci = 0;
+      img.src = cands[ci];
+      img.alt = `Photo ${i}`;
+      img.onerror = ()=>{ ci++; if (ci < cands.length) img.src = cands[ci]; };
+
+      card.appendChild(img);
+      card.addEventListener("click", ()=> openLightbox(img.currentSrc || img.src));
+      photosGrid.appendChild(card);
+    }
+
+    for (let i=1; i<=videoCount; i++){
+      const card = document.createElement("div");
+      card.className = "mediaCard videoCard";
+      card.appendChild(buildHeartHalo());
+
+      const vid = document.createElement("video");
+      const cands = videoCandidates(i);
+      let vi = 0;
+      vid.src = cands[vi];
+      vid.controls = true;
+      vid.playsInline = true;
+      vid.preload = "metadata";
+      vid.onerror = ()=>{ vi++; if (vi < cands.length) vid.src = cands[vi]; };
+
+      const playOverlay = document.createElement("div");
+      playOverlay.className = "playOverlay";
+      const playBtn = document.createElement("button");
+      playBtn.className = "playOverlayBtn";
+      playBtn.type = "button";
+      playBtn.setAttribute("aria-label", "Play video");
+      const playIcon = document.createElement("div");
+      playIcon.className = "playIcon";
+      playBtn.appendChild(playIcon);
+      playOverlay.appendChild(playBtn);
+
+      playBtn.addEventListener("click", (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        if (vid.paused) vid.play().catch(()=>{});
+        else vid.pause();
+      });
+
+      vid.addEventListener("play", ()=> playOverlay.classList.add("playing"));
+      vid.addEventListener("pause", ()=> playOverlay.classList.remove("playing"));
+      vid.addEventListener("ended", ()=> playOverlay.classList.remove("playing"));
+
+      card.appendChild(vid);
+      card.appendChild(playOverlay);
+      videosGrid.appendChild(card);
+    }
+
+    /* ---------------------------
+       WHEEL (NO TEXT ON WHEEL) + clean result (no emojis)
+    ----------------------------*/
+    const wheel = document.getElementById("wheel");
+    const spinBtn = document.getElementById("spinBtn");
+    const spinResult = document.getElementById("spinResult");
+
+    const wheelActions = [
+      {label:"Random Photo", run: ()=> spinToRandomPhoto()},
+      {label:"Random Video", run: ()=> spinToRandomVideo()},
+      {label:"Random Song",  run: ()=> spinToRandomSong()},
+      {label:"Tulip Fireworks", run: ()=> document.getElementById("tulipBtn").click()},
+      {label:"New Reason", run: ()=> document.getElementById("newReasonBtn").click()},
+      {label:"Scratch Reveal", run: ()=> goScratchBtn.click()},
+    ];
+
+    let spinning = false;
+    let currentRot = 0;
+
+    function normDeg(d){
+      d = d % 360;
+      if (d < 0) d += 360;
+      return d;
+    }
+
+    function indexUnderPointer(){
+      const n = wheelActions.length;
+      const seg = 360 / n;
+      const pointerAngle = normDeg(360 - normDeg(currentRot));
+      const idx = Math.floor((pointerAngle + seg/2) / seg) % n;
+      return idx;
+    }
+
+    spinBtn.addEventListener("click", ()=>{
+      if (spinning) return;
+      spinning = true;
+      spinBtn.disabled = true;
+      spinBtn.style.opacity = .75;
+
+      const n = wheelActions.length;
+      const seg = 360 / n;
+
+      const pick = Math.floor(Math.random()*n);
+      const centerAngle = pick * seg + (seg/2);
+      const desiredNorm = normDeg(360 - centerAngle);
+      const currentNorm = normDeg(currentRot);
+      const deltaNorm = normDeg(desiredNorm - currentNorm);
+
+      const spins = 6 + Math.floor(Math.random()*3);
+      const rot = spins*360 + deltaNorm;
+
+      currentRot += rot;
+      wheel.style.setProperty("--rot", currentRot + "deg");
+
+      const done = () => {
+        wheel.removeEventListener("transitionend", done);
+
+        const idx = indexUnderPointer();
+        const action = wheelActions[idx];
+
+        spinResult.textContent = "Wheel says: " + action.label;
+        action.run();
+
+        spinning = false;
+        spinBtn.disabled = false;
+        spinBtn.style.opacity = 1;
+      };
+
+      wheel.addEventListener("transitionend", done, { once: true });
+    });
+
+    function spinToRandomPhoto(){
+      showPage("photos");
+      setTimeout(()=>{
+        const i = 1 + Math.floor(Math.random()*photoCount);
+        const imgEl = photosGrid.children[i-1]?.querySelector("img");
+        if (imgEl) openLightbox(imgEl.currentSrc || imgEl.src);
+      }, 160);
+    }
+
+    function spinToRandomVideo(){
+      showPage("videos");
+      setTimeout(()=>{
+        const i = 1 + Math.floor(Math.random()*videoCount);
+        const card = videosGrid.children[i-1];
+        const vid = card?.querySelector("video");
+        if (card) card.scrollIntoView({behavior:"smooth", block:"center"});
+        if (vid) vid.play().catch(()=>{});
+      }, 220);
+    }
+
+    function spinToRandomSong(){
+      showPage("songs");
+      setTimeout(()=>{
+        const i = Math.floor(Math.random()*songs.length);
+        selectSong(i);
+      }, 160);
+    }
+
+    /* ---------------------------
+       SONGS (your exact YouTube links)
+    ----------------------------*/
+    const songs = [
+      {title:"act vi: mad man", artist:"4batz", spotify:"https://open.spotify.com/search/act%20vi%3A%20mad%20man%204batz", youtube:"https://youtu.be/SRnnVRn9puc?si=YSdACyuGekPkfqAE"},
+      {title:"No Chill", artist:"PARTYNEXTDOOR", spotify:"https://open.spotify.com/search/No%20Chill%20PARTYNEXTDOOR", youtube:"https://youtu.be/5_F0YCqdxnM?si=DIFD2XSpHSfdHWrA"},
+      {title:"RAINING IN HOUSTON", artist:"Drake", spotify:"https://open.spotify.com/search/RAINING%20IN%20HOUSTON%20Drake", youtube:"https://youtu.be/V_oB1e_Z4ag?si=LUQq3VL98BuXC9ZM"},
+      {title:"CN TOWER", artist:"Drake", spotify:"https://open.spotify.com/search/CN%20TOWER%20Drake", youtube:"https://youtu.be/0gI8phQgRss?si=nBnBXkxBO5ZFc1Yi"},
+      {title:"Drink N Dance", artist:"Future, Metro Boomin", spotify:"https://open.spotify.com/search/Drink%20N%20Dance%20Future%20Metro%20Boomin", youtube:"https://youtu.be/eBjq5HLgmnU?si=sw_PqRsJT3HGarRV"},
+      {title:"Cameras / Good Ones Go Interlude", artist:"Drake", spotify:"https://open.spotify.com/search/Cameras%20Good%20Ones%20Go%20Interlude%20Drake", youtube:"https://youtu.be/wnKoIQDfymE?si=N_xWo44PNkXFGRS4"},
+      {title:"F&V - Prison Tapes", artist:"Tory Lanez", spotify:"https://open.spotify.com/search/F%26V%20Prison%20Tapes%20Tory%20Lanez", youtube:"https://youtu.be/6rDKchO7LF4?si=qa93qZSQCjbn8L-2"},
+    ];
+
+    const songList = document.getElementById("songList");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailArtist = document.getElementById("detailArtist");
+    const detailBtns = document.getElementById("detailBtns");
+    const qrWrap = document.getElementById("qrWrap");
+    const qrImg = document.getElementById("qrImg");
+    const qrText = document.getElementById("qrText");
+    const ytWrap = document.getElementById("ytWrap");
+    const ytFrame = document.getElementById("ytFrame");
+
+    songs.forEach((s, idx)=>{
+      const row = document.createElement("div");
+      row.className = "songRow";
+      row.id = `songRow-${idx}`;
+      row.innerHTML = `
+        <div class="hint">
+          <div class="eq"><span></span><span></span><span></span><span></span></div>
+          <span>click</span>
+        </div>
+        <p class="title">${escapeHtml(s.title)}</p>
+        <p class="artist">${escapeHtml(s.artist)}</p>
+      `;
+      row.addEventListener("click", ()=> selectSong(idx));
+      songList.appendChild(row);
+    });
+
+    function makeLinkBtn(text, href, red){
+      const a = document.createElement("a");
+      a.className = "linkBtn" + (red ? " red" : "");
+      a.textContent = text;
+      a.href = href;
+      a.target = "_blank";
+      a.rel = "noopener";
+      return a;
+    }
+
+    function getYouTubeId(url){
+      try{
+        const u = new URL(url);
+        if (u.hostname.includes("youtu.be")) return u.pathname.replace("/","");
+        const v = u.searchParams.get("v");
+        if (v) return v;
+        const m = u.pathname.match(/\/embed\/([^\/]+)/);
+        if (m) return m[1];
+        return null;
+      } catch {
+        return null;
+      }
+    }
+
+    function selectSong(idx){
+      const s = songs[idx];
+      document.querySelectorAll(".songRow").forEach(r=> r.classList.remove("active"));
+      document.getElementById(`songRow-${idx}`)?.classList.add("active");
+
+      detailTitle.textContent = s.title;
+      detailArtist.textContent = s.artist;
+
+      detailBtns.innerHTML = "";
+      detailBtns.appendChild(makeLinkBtn("Spotify", s.spotify, false));
+      detailBtns.appendChild(makeLinkBtn("YouTube", s.youtube, true));
+
+      qrWrap.style.display = "flex";
+      qrText.innerHTML = `Spotify QR for <b>${escapeHtml(s.title)}</b>.`;
+      qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(s.spotify)}`;
+
+      const id = getYouTubeId(s.youtube);
+      if (id){
+        ytWrap.style.display = "block";
+        ytFrame.src = `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+      } else {
+        ytWrap.style.display = "none";
+        ytFrame.src = "";
+      }
+    }
+
+    /* ---------------------------
+       LIVE HEARTS BACKGROUND (yellow + blue)
+    ----------------------------*/
+    const bg = document.getElementById("bgCanvas");
+    const bctx = bg.getContext("2d");
+
+    function resizeBg(){
+      const DPR = window.devicePixelRatio || 1;
+      bg.width = Math.floor(innerWidth * DPR);
+      bg.height = Math.floor(innerHeight * DPR);
+      bg.style.width = innerWidth + "px";
+      bg.style.height = innerHeight + "px";
+      bctx.setTransform(DPR,0,0,DPR,0,0);
+    }
+    window.addEventListener("resize", resizeBg);
+    resizeBg();
+
+    function heartPath(ctx, x, y, s){
+      ctx.beginPath();
+      ctx.moveTo(x, y + s*0.35);
+      ctx.bezierCurveTo(x, y, x - s*0.6, y, x - s*0.6, y + s*0.35);
+      ctx.bezierCurveTo(x - s*0.6, y + s*0.75, x, y + s*0.95, x, y + s*1.2);
+      ctx.bezierCurveTo(x, y + s*0.95, x + s*0.6, y + s*0.75, x + s*0.6, y + s*0.35);
+      ctx.bezierCurveTo(x + s*0.6, y, x, y, x, y + s*0.35);
+      ctx.closePath();
+    }
+
+    const hearts = [];
+    const heartColors = [
+      "rgba(154,215,255,.65)",
+      "rgba(246,213,139,.55)",
+      "rgba(154,215,255,.45)",
+      "rgba(246,213,139,.42)"
+    ];
+
+    function seedHearts(){
+      hearts.length = 0;
+      const count = Math.min(95, Math.max(55, Math.floor(innerWidth/14)));
+      for (let i=0;i<count;i++){
+        hearts.push({
+          x: Math.random()*innerWidth,
+          y: Math.random()*innerHeight,
+          s: 6 + Math.random()*16,
+          vy: 0.25 + Math.random()*0.85,
+          vx: (Math.random()*0.4 - 0.2),
+          a: Math.random()*Math.PI*2,
+          va: (Math.random()*0.012 - 0.006),
+          c: heartColors[Math.floor(Math.random()*heartColors.length)],
+          o: 0.20 + Math.random()*0.55
+        });
+      }
+    }
+    seedHearts();
+
+    let lastT = performance.now();
+    function animateBg(t){
+      const dt = Math.min(32, t-lastT);
+      lastT = t;
+      bctx.clearRect(0,0,innerWidth,innerHeight);
+
+      hearts.forEach(h=>{
+        h.y -= h.vy * (dt/16);
+        h.x += h.vx * (dt/16);
+        h.a += h.va * (dt/16);
+        if (h.y < -40) { h.y = innerHeight + 40; h.x = Math.random()*innerWidth; }
+        if (h.x < -40) h.x = innerWidth + 40;
+        if (h.x > innerWidth + 40) h.x = -40;
+
+        bctx.save();
+        bctx.globalAlpha = h.o;
+        bctx.translate(h.x, h.y);
+        bctx.rotate(h.a);
+        bctx.fillStyle = h.c;
+        heartPath(bctx, 0, 0, h.s);
+        bctx.fill();
+        bctx.restore();
+      });
+
+      requestAnimationFrame(animateBg);
+    }
+    requestAnimationFrame(animateBg);
+
+    /* ---------------------------
+       UTIL
+    ----------------------------*/
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+  </script>
+</body>
+</html>
