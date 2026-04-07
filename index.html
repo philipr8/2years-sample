@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Philip & Monique — TWO YEARS TOGETHER</title>
+  <title>____ goes here</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,7 +145,6 @@
     .reasonSmall{margin:4px 0 0;font-size:12px;opacity:.72;}
     .miniNote{margin-top:12px;font-size:12px;opacity:.70;}
 
-    /* Tulip fireworks */
     .tulipLayer{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden;}
     .tulip{position:absolute;font-size:28px;will-change: transform, opacity;filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));opacity:0;animation: tulipPop 1.35s ease forwards;}
     @keyframes tulipPop{
@@ -155,18 +154,17 @@
       100%{ transform: translate(var(--x2), var(--y2)) scale(.9) rotate(18deg); opacity:0;}
     }
 
-    /* Scratch */
     .scratchWrap{display:grid;grid-template-columns:1fr;gap:10px;}
     .scratchCard{border-radius: 22px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background: rgba(255,255,255,.06);position:relative;box-shadow: 0 16px 60px rgba(0,0,0,.32);}
     .scratchInner{
       position:relative;
       width:100%;
-      aspect-ratio: 4 / 3; /* set exactly from image via JS */
+      aspect-ratio: 4 / 3;
       background: rgba(0,0,0,.25);
     }
     .scratchInner img{
       position:absolute;inset:0;width:100%;height:100%;
-      object-fit: contain; /* shows the FULL image (no crop) */
+      object-fit: contain;
       background: rgba(0,0,0,.20);
       filter: saturate(1.05) contrast(1.02);
     }
@@ -186,11 +184,9 @@
     .scratchPulse{ animation: pulse 1.2s ease-in-out infinite; }
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
 
-    /* Section headings */
     .pageTitle{font-family:"Playfair Display", serif;font-weight:700;font-size:28px;margin:0 0 12px;}
     .pageSub{margin:0 0 18px;opacity:.80;font-size:14px;}
 
-    /* Timeline */
     .timeline{position:relative;padding-left: 20px;display:grid;gap:14px;}
     .timeline::before{
       content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;border-radius:9px;opacity:.8;
@@ -220,7 +216,6 @@
     .tHint{margin:10px 0 0;opacity:.72;font-size:12px;display:inline-flex;gap:8px;align-items:center;}
     .tHint .dot{width:7px;height:7px;border-radius:99px;background: rgba(154,215,255,.9);box-shadow:0 0 14px rgba(154,215,255,.35);}
 
-    /* Media grid */
     .grid{display:grid;grid-template-columns: repeat(3, 1fr);gap:14px;}
     @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 560px){ .grid{ grid-template-columns: 1fr; } }
@@ -235,7 +230,6 @@
     }
     .mediaCard:hover{ transform: translateY(-2px); background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
 
-    /* hearts moving around each frame */
     .heartHalo{position:absolute;inset:0;pointer-events:none;z-index:4;}
     .heartHalo .strip{position:absolute;opacity:.95;filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));mix-blend-mode: screen;}
     .heartHalo .strip{
@@ -253,7 +247,6 @@
     @keyframes heartsX{ from{ background-position: 0 0; } to{ background-position: 220px 0; } }
     @keyframes heartsY{ from{ background-position: 0 0; } to{ background-position: 0 220px; } }
 
-    /* Photos */
     .mediaCard img{
       width:100%;
       height: 320px;
@@ -265,7 +258,6 @@
     }
     @media (max-width: 560px){ .mediaCard img{ height: 340px; } }
 
-    /* Videos: vertical */
     .videoCard{cursor:default;max-width: 520px;margin: 0 auto;}
     .videoCard video{
       width:100%;
@@ -279,7 +271,6 @@
     }
     @media (max-width: 560px){ .videoCard{ max-width: 92vw; } }
 
-    /* BIG PLAY BUTTON OVERLAY */
     .playOverlay{
       position:absolute;inset:0;z-index:6;
       display:grid;place-items:center;
@@ -311,7 +302,6 @@
       filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
     }
 
-    /* Wheel (NO SEGMENT TEXT) */
     .wheelWrap{display:grid;grid-template-columns: 1fr;gap:12px;align-items:center;justify-items:center;padding-top:10px;}
     .wheelArea{width:min(360px, 92vw);aspect-ratio: 1 / 1;position:relative;display:grid;place-items:center;}
     .pointer{
@@ -386,7 +376,6 @@
     .spinBtn:hover{transform: translateY(-1px); filter: brightness(1.03);}
     .spinResult{font-size:13px;opacity:.86;text-align:center;min-height:18px;}
 
-    /* Songs */
     .songsGrid{display:grid;grid-template-columns: 1.1fr .9fr;gap:14px;}
     @media (max-width: 900px){ .songsGrid{grid-template-columns:1fr;} }
 
@@ -489,12 +478,10 @@
     }
     .ytWrap iframe{width:100%;aspect-ratio: 16 / 9;border:0;display:block;}
 
-    /* Letter */
     .letter{font-family:"Playfair Display", serif;font-size:18px;line-height:1.72;opacity:.95;}
     .letter .script{font-family:"Dancing Script", cursive;font-size:34px;margin:0 0 8px;color: var(--gold);}
     .letter .sig{margin-top:14px;font-family:"Dancing Script", cursive;font-size:28px;color: rgba(255,255,255,.92);}
 
-    /* Lightbox */
     .overlay{
       position:fixed;inset:0;
       background: rgba(0,0,0,.64);
@@ -539,142 +526,134 @@
     <div class="wrap">
       <div class="topbar">
         <div class="brand">
-          <div class="title">philip <span style="opacity:.75">&</span> monique</div>
-          <div class="sub">two years together</div>
+          <div class="title">____ goes here</div>
+          <div class="sub">____ goes here</div>
         </div>
 
         <nav class="nav" aria-label="Site navigation">
-          <button class="tabBtn active" data-go="home">us</button>
-          <button class="tabBtn" data-go="timeline">our story so far</button>
-          <button class="tabBtn" data-go="photos">memories</button>
-          <button class="tabBtn" data-go="videos">moments</button>
-          <button class="tabBtn" data-go="songs">our soundtrack</button>
-          <button class="tabBtn" data-go="letter">my love for you</button>
+          <button class="tabBtn active" data-go="home">____ goes here</button>
+          <button class="tabBtn" data-go="timeline">____ goes here</button>
+          <button class="tabBtn" data-go="photos">____ goes here</button>
+          <button class="tabBtn" data-go="videos">____ goes here</button>
+          <button class="tabBtn" data-go="songs">____ goes here</button>
+          <button class="tabBtn" data-go="letter">____ goes here</button>
         </nav>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- HOME -->
     <section class="page active" id="page-home">
       <div class="hero">
 
-        <!-- LEFT PANEL -->
         <div class="card">
-          <h1 class="h1">happy two years, <span class="accentName">monique</span></h1>
-          <p class="lead">a tiny little corner of the internet that’s just ours — made by philly, for you babe.</p>
+          <h1 class="h1">____ goes here, <span class="accentName">____ goes here</span></h1>
+          <p class="lead">____ goes here</p>
 
           <div class="timer" id="timer">
-            <div class="tBox"><div class="tNum" id="tYears">—</div><div class="tLbl">years</div></div>
-            <div class="tBox"><div class="tNum" id="tDays">—</div><div class="tLbl">days</div></div>
-            <div class="tBox"><div class="tNum" id="tHours">—</div><div class="tLbl">hours</div></div>
-            <div class="tBox"><div class="tNum" id="tMins">—</div><div class="tLbl">minutes</div></div>
-            <div class="tBox"><div class="tNum" id="tSecs">—</div><div class="tLbl">seconds</div></div>
+            <div class="tBox"><div class="tNum" id="tYears">—</div><div class="tLbl">____ goes here</div></div>
+            <div class="tBox"><div class="tNum" id="tDays">—</div><div class="tLbl">____ goes here</div></div>
+            <div class="tBox"><div class="tNum" id="tHours">—</div><div class="tLbl">____ goes here</div></div>
+            <div class="tBox"><div class="tNum" id="tMins">—</div><div class="tLbl">____ goes here</div></div>
+            <div class="tBox"><div class="tNum" id="tSecs">—</div><div class="tLbl">____ goes here</div></div>
           </div>
 
           <div class="reasonBox" style="margin-top:10px;">
             <div class="heart">❤</div>
             <div style="flex:1">
-              <p class="reasonText" id="reasonText">you are my everything.</p>
-              <p class="reasonSmall">tap “new reason” whenever you want another one.</p>
+              <p class="reasonText" id="reasonText">____ goes here</p>
+              <p class="reasonSmall">____ goes here</p>
             </div>
           </div>
 
           <div class="pillRow">
-            <div class="pill" id="newReasonBtn"><span class="dot"></span> new reason</div>
-            <div class="pill red" id="tulipBtn"><span class="dot"></span> tulip fireworks</div>
-            <div class="pill" id="goScratchBtn"><span class="dot"></span> scratch reveal</div>
+            <div class="pill" id="newReasonBtn"><span class="dot"></span> ____ goes here</div>
+            <div class="pill red" id="tulipBtn"><span class="dot"></span> ____ goes here</div>
+            <div class="pill" id="goScratchBtn"><span class="dot"></span> ____ goes here</div>
           </div>
 
-          <p class="miniNote">Together since <b>January 26, 2024</b>.</p>
+          <p class="miniNote">____ goes here</p>
 
           <hr style="border:none;border-top:1px solid rgba(255,255,255,.10); margin:16px 0;">
 
-          <!-- WHEEL (NO TEXT ON WHEEL) -->
           <div class="wheelWrap">
             <div class="wheelArea">
               <div class="pointer" aria-hidden="true"></div>
               <div class="wheel" id="wheel"></div>
-              <div class="wheelCenter">spin ∞</div>
+              <div class="wheelCenter">____ goes here</div>
             </div>
 
-            <button class="spinBtn" id="spinBtn">feeling lucky? i sure am the luckiest</button>
+            <button class="spinBtn" id="spinBtn">____ goes here</button>
             <div class="spinResult" id="spinResult"></div>
           </div>
         </div>
 
-        <!-- RIGHT PANEL: scratch -->
         <div class="card">
           <div class="scratchWrap" id="scratchSection">
             <div class="scratchCard" id="scratchCard">
               <div class="scratchInner" id="scratchInner">
-                <img id="scratchImg" src="media/lego.png" alt="Hidden memory" />
+                <img id="scratchImg" src="media/lego.png" alt="____ goes here" />
                 <canvas class="scratchCanvas" id="scratchCanvas"></canvas>
 
-                <div class="scratchBadge"><b>scratch</b>to reveal</div>
-                <div class="scratchDone" id="scratchDone">revealed</div>
+                <div class="scratchBadge"><b>____ goes here</b>____ goes here</div>
+                <div class="scratchDone" id="scratchDone">____ goes here</div>
               </div>
             </div>
           </div>
 
-          <p class="miniNote">tip: use your mouse or finger to scratch.</p>
+          <p class="miniNote">____ goes here</p>
         </div>
 
       </div>
     </section>
 
-    <!-- TIMELINE -->
     <section class="page" id="page-timeline">
       <div class="wrap" style="max-width:1100px;padding:0;">
         <div class="card">
-          <h2 class="pageTitle">our story so far</h2>
-          <p class="pageSub">tap a moment to pop up its photo</p>
+          <h2 class="pageTitle">____ goes here</h2>
+          <p class="pageSub">____ goes here</p>
           <div class="timeline" id="timelineList"></div>
         </div>
       </div>
     </section>
 
-    <!-- PHOTOS -->
     <section class="page" id="page-photos">
       <div class="wrap" style="max-width:1100px;padding:0;">
         <div class="card">
-          <h2 class="pageTitle">memories</h2>
-          <p class="pageSub">click any photo to see it fullscreen</p>
+          <h2 class="pageTitle">____ goes here</h2>
+          <p class="pageSub">____ goes here</p>
           <div class="grid" id="photosGrid"></div>
         </div>
       </div>
     </section>
 
-    <!-- VIDEOS -->
     <section class="page" id="page-videos">
       <div class="wrap" style="max-width:1100px;padding:0;">
         <div class="card">
-          <h2 class="pageTitle">moments</h2>
-          <p class="pageSub">small moments i'll cherish forever</p>
+          <h2 class="pageTitle">____ goes here</h2>
+          <p class="pageSub">____ goes here</p>
           <div class="grid" id="videosGrid"></div>
         </div>
       </div>
     </section>
 
-    <!-- SONGS -->
     <section class="page" id="page-songs">
       <div class="wrap" style="max-width:1100px;padding:0;">
         <div class="card">
-          <h2 class="pageTitle">our soundtrack</h2>
-          <p class="pageSub">click a song to play it</p>
+          <h2 class="pageTitle">____ goes here</h2>
+          <p class="pageSub">____ goes here</p>
 
           <div class="songsGrid">
             <div class="songList" id="songList"></div>
 
             <div class="songDetail" id="songDetail">
-              <h3 class="detailTitle" id="detailTitle">pick a song</h3>
+              <h3 class="detailTitle" id="detailTitle">____ goes here</h3>
               <div class="detailArtist" id="detailArtist"></div>
 
               <div class="detailBtns" id="detailBtns"></div>
 
               <div class="qrWrap" id="qrWrap">
-                <img id="qrImg" alt="Spotify QR code" />
+                <img id="qrImg" alt="____ goes here" />
                 <div class="qrText" id="qrText"></div>
               </div>
 
@@ -682,49 +661,36 @@
                 <iframe id="ytFrame" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               </div>
 
-              <p class="miniNote" style="margin:12px 0 0;">press play and roam the website with it on in the background</p>
+              <p class="miniNote" style="margin:12px 0 0;">____ goes here</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- LETTER -->
     <section class="page" id="page-letter">
       <div class="wrap" style="max-width:1100px;padding:0;">
         <div class="card">
           <div class="letter">
-            <div class="script">monique,</div>
-            <p>
-              two years with you has been my favorite kind of time. it's the kind that doesn’t just pass,
-              it builds. you’ve made my days softer, funnier, and way more meaningful. i'm beyond grateful to get to experience what true love feels like with my one and only true love.
-            </p>
-            <p>
-              i love how you make the small stuff feel special. i love your heart. i love your laugh.
-              i love how being with you feels like home, even when we’re doing absolutely nothing. i love your smelly farts. i love how being with you is my favourite way to spend time. yes, even over playing fifa.
-            </p>
-            <p>
-              HAPPY TWO YEARS TO US!!! here’s to everything we’ve already lived and everything we haven’t even dreamed up yet. to all the wonderful memories we've made and will make in the future. i love you so much baby forever and ever and ever ❤️♾️
-            </p>
-            <div class="sig">love, philly</div>
+            <div class="script">____ goes here</div>
+            <p>____ goes here</p>
+            <p>____ goes here</p>
+            <p>____ goes here</p>
+            <div class="sig">____ goes here</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Lightbox -->
     <div class="overlay" id="overlay">
-      <div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-        <button class="closeBtn" id="closeBtn" aria-label="Close">✕</button>
-        <img id="lightboxImg" alt="Fullscreen photo" />
+      <div class="lightbox" role="dialog" aria-modal="true" aria-label="____ goes here">
+        <button class="closeBtn" id="closeBtn" aria-label="____ goes here">✕</button>
+        <img id="lightboxImg" alt="____ goes here" />
       </div>
     </div>
   </main>
 
   <script>
-    /* ---------------------------
-       TAB NAV
-    ----------------------------*/
     const pages = ["home","timeline","photos","videos","songs","letter"];
     const tabButtons = Array.from(document.querySelectorAll(".tabBtn"));
 
@@ -746,9 +712,6 @@
     const initial = (location.hash || "").replace("#","").trim();
     if (pages.includes(initial)) showPage(initial);
 
-    /* ---------------------------
-       TIMER (with seconds)
-    ----------------------------*/
     const startDate = new Date("2024-01-26T00:00:00");
     const tYears = document.getElementById("tYears");
     const tDays  = document.getElementById("tDays");
@@ -783,36 +746,15 @@
     updateTimer();
     setInterval(updateTimer, 250);
 
-    /* ---------------------------
-       RANDOM REASONS
-    ----------------------------*/
     const reasons = [
-      "you are eevrything to me.",
-      "you’re my favorite person to do nothing with.",
-      "your smile fixes my whole day.",
-      "you’re the sweetest and most caring person.",
-      "you make me laugh when i'm down.",
-      "you make ordinary days feel special.",
-      "you listen with your whole heart.",
-      "you’re my safe place.",
-      "you make love feel easy and effortless.",
-      "you make me want to be better.",
-      "you are my motivation.",
-      "you're the willy to my bum bum.",
-      "you always have my back.",
-      "you're the smartest girl i know.",
-      "you are my motivation.",
-      "you’re my favorite person to talk to about everything and nothing.",
-      "i love how you notice the small things.",
-      "you make me feel chosen.",
-      "i love how we can be silly together.",
-      "i love how we grow together.",
-      "i would choose you in every timeline and in every universe.",
-      "you make me feel understood without me saying much.",
-      "you’re my favorite notification.",
-      "i love your laugh — it’s my favorite sound.",
-      "i love your farts — it’s my favorite smell.",
-      "you’re the best part of my routine."
+      "____ goes here",
+      "____ goes here",
+      "____ goes here",
+      "____ goes here",
+      "____ goes here",
+      "____ goes here",
+      "____ goes here",
+      "____ goes here"
     ];
     const reasonText = document.getElementById("reasonText");
     document.getElementById("newReasonBtn").addEventListener("click", ()=>{
@@ -825,9 +767,6 @@
       reasonText.animate([{transform:"translateY(6px)",opacity:.0},{transform:"none",opacity:1}], {duration:220, easing:"ease-out"});
     });
 
-    /* ---------------------------
-       TULIP FIREWORKS
-    ----------------------------*/
     const tulipLayer = document.getElementById("tulipLayer");
     document.getElementById("tulipBtn").addEventListener("click", ()=>{
       const bursts = 6 + Math.floor(Math.random()*4);
@@ -859,9 +798,6 @@
       }
     }
 
-    /* ---------------------------
-       SCRATCH REVEAL (dark cover + exact image aspect ratio)
-    ----------------------------*/
     const goScratchBtn = document.getElementById("goScratchBtn");
     const scratchCard = document.getElementById("scratchCard");
     const scratchInner = document.getElementById("scratchInner");
@@ -896,7 +832,6 @@
       scratchCanvas.height = Math.floor(rect.height * dpr);
       sctx.setTransform(dpr,0,0,dpr,0,0);
 
-      // dark cover
       sctx.globalCompositeOperation = "source-over";
       sctx.clearRect(0,0,rect.width,rect.height);
       const grad = sctx.createLinearGradient(0,0,rect.width,rect.height);
@@ -906,7 +841,6 @@
       sctx.fillStyle = grad;
       sctx.fillRect(0,0,rect.width,rect.height);
 
-      // sparkles
       for (let i=0;i<220;i++){
         const a = 0.03 + Math.random()*0.05;
         sctx.fillStyle = `rgba(255,255,255,${a})`;
@@ -917,9 +851,8 @@
 
       sctx.fillStyle = "rgba(255,255,255,.75)";
       sctx.font = "600 14px Poppins, sans-serif";
-      sctx.fillText("scratch to reveal", 18, rect.height - 18);
+      sctx.fillText("____ goes here", 18, rect.height - 18);
 
-      // scratch mode
       sctx.globalCompositeOperation = "destination-out";
     }
 
@@ -972,9 +905,6 @@
     setTimeout(resizeScratch, 60);
     resizeScratch();
 
-    /* ---------------------------
-       LIGHTBOX
-    ----------------------------*/
     const overlay = document.getElementById("overlay");
     const lightboxImg = document.getElementById("lightboxImg");
     const closeBtn = document.getElementById("closeBtn");
@@ -1002,9 +932,6 @@
     overlay.addEventListener("click", (e)=>{ if(e.target === overlay) closeLightbox(); });
     window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeLightbox(); });
 
-    /* ---------------------------
-       MEDIA HELPERS
-    ----------------------------*/
     function photoCandidates(i){
       const two = String(i).padStart(2,"0");
       return [
@@ -1035,22 +962,19 @@
       return halo;
     }
 
-    /* ---------------------------
-       TIMELINE (click -> pop photo p01..)
-    ----------------------------*/
     const timelineEvents = [
-      {date:"Jan 26, 2024", title:"where it all started", desc:"the beginning of my favorite story.", img:61},
-      {date:"February 2024", title:"getting comfortable", desc:"our first (with photo proof) sleep together.", img:62},
-      {date:"February 14, 2024", title:"my valentine", desc:"boba and walsh = the best valentines.", img:63},
-      {date:"March 2024", title:"first movie date", desc:"cuddling at the landmark watching a scary movie, ahhhhh.", img:64},
-      {date:"April 9, 2024", title:"west walk by the water", desc:"just the two of us and our evening by the water.", img:65},
-      {date:"April 27, 2024", title:"first link in toronto", desc:"wandering the westin with the one i love.", img:66},
-      {date:"July 1, 2024", title:"canada day", desc:"ngl this is the most aesthetic photo we've taken so i had to include it", img:67},
-      {date:"January 26, 2025", title:"1 year", desc:"a fancy steak and blackened chicken dinner at the heist in ktown.", img:69},
-      {date:"July 6, 2025", title:"date night in the 6ix", desc:"what a wonderful day of eating at joeys and walking around my city with my love.", img:70},
-      {date:"September 8, 2025", title:"my bday surprise", desc:"after a romantic dinner by the water (that pic is in the photos section), she orchestrates a surprise party for me hehehe.", img:71},
-      {date:"December 7, 2025", title:"your bday", desc:"a day of eating heal, rotting together during exam szn, having pizza and cake, and opening gifts.", img:72},
-      {date:"January 26, 2026", title:"2 years", desc:"still choosing you, now, forever and always.", img:73}
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:61},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:62},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:63},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:64},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:65},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:66},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:67},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:69},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:70},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:71},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:72},
+      {date:"____ goes here", title:"____ goes here", desc:"____ goes here", img:73}
     ];
 
     const timelineList = document.getElementById("timelineList");
@@ -1063,7 +987,7 @@
           <div class="tDate">${escapeHtml(ev.date)}</div>
         </div>
         <p class="tDesc">${escapeHtml(ev.desc)}</p>
-        <div class="tHint"><span class="dot"></span> Tap to view photo</div>
+        <div class="tHint"><span class="dot"></span> ____ goes here</div>
       `;
       div.addEventListener("click", ()=>{
         openLightboxCandidates(photoCandidates(ev.img));
@@ -1071,9 +995,6 @@
       timelineList.appendChild(div);
     });
 
-    /* ---------------------------
-       RENDER PHOTOS / VIDEOS
-    ----------------------------*/
     const photosGrid = document.getElementById("photosGrid");
     const videosGrid = document.getElementById("videosGrid");
     const photoCount = 30;
@@ -1088,7 +1009,7 @@
       const cands = photoCandidates(i);
       let ci = 0;
       img.src = cands[ci];
-      img.alt = `Photo ${i}`;
+      img.alt = `____ goes here`;
       img.onerror = ()=>{ ci++; if (ci < cands.length) img.src = cands[ci]; };
 
       card.appendChild(img);
@@ -1115,7 +1036,7 @@
       const playBtn = document.createElement("button");
       playBtn.className = "playOverlayBtn";
       playBtn.type = "button";
-      playBtn.setAttribute("aria-label", "Play video");
+      playBtn.setAttribute("aria-label", "____ goes here");
       const playIcon = document.createElement("div");
       playIcon.className = "playIcon";
       playBtn.appendChild(playIcon);
@@ -1137,20 +1058,17 @@
       videosGrid.appendChild(card);
     }
 
-    /* ---------------------------
-       WHEEL (NO TEXT ON WHEEL) + clean result (no emojis)
-    ----------------------------*/
     const wheel = document.getElementById("wheel");
     const spinBtn = document.getElementById("spinBtn");
     const spinResult = document.getElementById("spinResult");
 
     const wheelActions = [
-      {label:"Random Photo", run: ()=> spinToRandomPhoto()},
-      {label:"Random Video", run: ()=> spinToRandomVideo()},
-      {label:"Random Song",  run: ()=> spinToRandomSong()},
-      {label:"Tulip Fireworks", run: ()=> document.getElementById("tulipBtn").click()},
-      {label:"New Reason", run: ()=> document.getElementById("newReasonBtn").click()},
-      {label:"Scratch Reveal", run: ()=> goScratchBtn.click()},
+      {label:"____ goes here", run: ()=> spinToRandomPhoto()},
+      {label:"____ goes here", run: ()=> spinToRandomVideo()},
+      {label:"____ goes here", run: ()=> spinToRandomSong()},
+      {label:"____ goes here", run: ()=> document.getElementById("tulipBtn").click()},
+      {label:"____ goes here", run: ()=> document.getElementById("newReasonBtn").click()},
+      {label:"____ goes here", run: ()=> goScratchBtn.click()},
     ];
 
     let spinning = false;
@@ -1197,7 +1115,7 @@
         const idx = indexUnderPointer();
         const action = wheelActions[idx];
 
-        spinResult.textContent = "Wheel says: " + action.label;
+        spinResult.textContent = "____ goes here " + action.label;
         action.run();
 
         spinning = false;
@@ -1236,17 +1154,14 @@
       }, 160);
     }
 
-    /* ---------------------------
-       SONGS (your exact YouTube links)
-    ----------------------------*/
     const songs = [
-      {title:"act vi: mad man", artist:"4batz", spotify:"https://open.spotify.com/search/act%20vi%3A%20mad%20man%204batz", youtube:"https://youtu.be/SRnnVRn9puc?si=YSdACyuGekPkfqAE"},
-      {title:"No Chill", artist:"PARTYNEXTDOOR", spotify:"https://open.spotify.com/search/No%20Chill%20PARTYNEXTDOOR", youtube:"https://youtu.be/5_F0YCqdxnM?si=DIFD2XSpHSfdHWrA"},
-      {title:"RAINING IN HOUSTON", artist:"Drake", spotify:"https://open.spotify.com/search/RAINING%20IN%20HOUSTON%20Drake", youtube:"https://youtu.be/V_oB1e_Z4ag?si=LUQq3VL98BuXC9ZM"},
-      {title:"CN TOWER", artist:"Drake", spotify:"https://open.spotify.com/search/CN%20TOWER%20Drake", youtube:"https://youtu.be/0gI8phQgRss?si=nBnBXkxBO5ZFc1Yi"},
-      {title:"Drink N Dance", artist:"Future, Metro Boomin", spotify:"https://open.spotify.com/search/Drink%20N%20Dance%20Future%20Metro%20Boomin", youtube:"https://youtu.be/eBjq5HLgmnU?si=sw_PqRsJT3HGarRV"},
-      {title:"Cameras / Good Ones Go Interlude", artist:"Drake", spotify:"https://open.spotify.com/search/Cameras%20Good%20Ones%20Go%20Interlude%20Drake", youtube:"https://youtu.be/wnKoIQDfymE?si=N_xWo44PNkXFGRS4"},
-      {title:"F&V - Prison Tapes", artist:"Tory Lanez", spotify:"https://open.spotify.com/search/F%26V%20Prison%20Tapes%20Tory%20Lanez", youtube:"https://youtu.be/6rDKchO7LF4?si=qa93qZSQCjbn8L-2"},
+      {title:"____ goes here", artist:"____ goes here", spotify:"https://open.spotify.com/", youtube:"https://www.youtube.com/"},
+      {title:"____ goes here", artist:"____ goes here", spotify:"https://open.spotify.com/", youtube:"https://www.youtube.com/"},
+      {title:"____ goes here", artist:"____ goes here", spotify:"https://open.spotify.com/", youtube:"https://www.youtube.com/"},
+      {title:"____ goes here", artist:"____ goes here", spotify:"https://open.spotify.com/", youtube:"https://www.youtube.com/"},
+      {title:"____ goes here", artist:"____ goes here", spotify:"https://open.spotify.com/", youtube:"https://www.youtube.com/"},
+      {title:"____ goes here", artist:"____ goes here", spotify:"https://open.spotify.com/", youtube:"https://www.youtube.com/"},
+      {title:"____ goes here", artist:"____ goes here", spotify:"https://open.spotify.com/", youtube:"https://www.youtube.com/"}
     ];
 
     const songList = document.getElementById("songList");
@@ -1266,7 +1181,7 @@
       row.innerHTML = `
         <div class="hint">
           <div class="eq"><span></span><span></span><span></span><span></span></div>
-          <span>click</span>
+          <span>____ goes here</span>
         </div>
         <p class="title">${escapeHtml(s.title)}</p>
         <p class="artist">${escapeHtml(s.artist)}</p>
@@ -1308,11 +1223,11 @@
       detailArtist.textContent = s.artist;
 
       detailBtns.innerHTML = "";
-      detailBtns.appendChild(makeLinkBtn("Spotify", s.spotify, false));
-      detailBtns.appendChild(makeLinkBtn("YouTube", s.youtube, true));
+      detailBtns.appendChild(makeLinkBtn("____ goes here", s.spotify, false));
+      detailBtns.appendChild(makeLinkBtn("____ goes here", s.youtube, true));
 
       qrWrap.style.display = "flex";
-      qrText.innerHTML = `Spotify QR for <b>${escapeHtml(s.title)}</b>.`;
+      qrText.innerHTML = `____ goes here <b>${escapeHtml(s.title)}</b>.`;
       qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(s.spotify)}`;
 
       const id = getYouTubeId(s.youtube);
@@ -1325,9 +1240,6 @@
       }
     }
 
-    /* ---------------------------
-       LIVE HEARTS BACKGROUND (yellow + blue)
-    ----------------------------*/
     const bg = document.getElementById("bgCanvas");
     const bctx = bg.getContext("2d");
 
@@ -1407,9 +1319,6 @@
     }
     requestAnimationFrame(animateBg);
 
-    /* ---------------------------
-       UTIL
-    ----------------------------*/
     function escapeHtml(str){
       return String(str)
         .replaceAll("&","&amp;")
